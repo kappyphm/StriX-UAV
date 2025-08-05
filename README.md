@@ -22,12 +22,9 @@ This repository contains the design, control circuitry, firmware, and hardware a
 - **Function**: Captures 6 analog and 2 digital channels from user input.
 - **Communication**: Transmits control signals via NRF24L01 module.
 
-### Receiver (RX) PCB
-- **Function**: Receives 6 PWM and 2 digital channels via NRF24L01.
-- **Output**: Forwards signals to the Flight Controller.
-
 ### Flight Controller (FC)
 - **Microcontroller**: STM32F103C8T6.
+- **Function**: Receives 6 PWM and 2 digital channels via NRF24L01.
 - **Peripherals**:
   - 2 aileron servos, 1 rudder servo, 1 elevator servo.
   - 1 ESC for brushless motor control.
@@ -36,54 +33,6 @@ This repository contains the design, control circuitry, firmware, and hardware a
 - **Power**: Supports 2S–3S LiPo batteries with stable power regulation.
 - **Debugging**: SWD interface for firmware updates and debugging.
 
-## Repository Structure
-```
-├── firmware/           # STM32F103C8T6 firmware source code
-├── schematics/         # PCB schematics for TX, RX, and FC
-├── software/           # Control software for autonomous flight and configuration
-├── docs/               # Documentation for hardware assembly and setup
-├── models/             # 3D models for UAV airframe
-└── README.md           # This file
-```
-
-## Setup Instructions
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/uav-project.git
-   cd uav-project
-   ```
-
-2. **Hardware Assembly**:
-   - Refer to `/docs/assembly_guide.md` for detailed instructions on assembling the UAV airframe, TX, RX, and FC.
-   - Ensure proper connections for NRF24L01, GPS, IMU, servos, and ESC as per `/schematics`.
-
-3. **Firmware Installation**:
-   - Install the STM32CubeIDE or compatible IDE.
-   - Flash the firmware located in `/firmware` to the STM32F103C8T6 using an SWD debugger.
-   - Configure the firmware settings for your GPS module and IMU calibration.
-
-4. **Software Setup**:
-   - Install the control software from `/software`.
-   - Configure waypoints for autonomous flight using the provided interface.
-
-5. **Testing**:
-   - Test the TX-RX communication within a 500m range.
-   - Verify stabilization using the IMU and autonomous flight with GPS.
-   - Test return-to-home functionality by simulating signal loss.
-
-## Requirements
-- **Hardware**:
-  - STM32F103C8T6 microcontroller.
-  - NRF24L01 modules (TX and RX).
-  - ICM20948 IMU.
-  - GPS module with UART interface.
-  - 2S–3S LiPo battery and compatible charger.
-  - 2 aileron servos, 1 rudder servo, 1 elevator servo, 1 ESC, and a brushless motor.
-
-- **Software**:
-  - STM32CubeIDE for firmware development.
-  - Python (for control software, if applicable).
-  - Compatible OS: Windows, Linux, or macOS.
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
